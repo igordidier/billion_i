@@ -1,0 +1,12 @@
+<?php
+ob_start(); //output buffer
+session_start();
+
+$timezone = date_default_timezone_set("Europe/Paris");
+$con = mysqli_connect("localhost","root","","billi");
+
+if (mysqli_connect_errno()) {
+  echo "Failed to connect:" . mysqli_connect_errno();
+}
+
+?>
