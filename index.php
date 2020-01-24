@@ -13,7 +13,7 @@ require 'config/config.php';
   </head>
   <body>
 <?php if (isset($_SESSION['success'])){
-echo "You Heve Created an account Corectly! welcome . $_SESSION[reg_username] .";
+echo "You Heve Created an account Correctly! welcome . $_SESSION[reg_username] .";
 } ?>
 
 

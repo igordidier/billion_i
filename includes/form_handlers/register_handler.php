@@ -50,24 +50,24 @@ $e_check = mysqli_query($con, "SELECT email FROM users wHERE email ='$em'");
 $num_rows = mysqli_num_rows($e_check);
 
 if ($num_rows > 0) {
-     array_push($error_array, "email Already used <br>");
+     array_push($error_array,"email Already used <br>");
 }
 
   }else {
-    array_push($error_array, "Invalide Email <br>");
+    array_push($error_array,"Invalide Email <br>");
   }
 
   if (strlen($fname) > 25 || strlen($fname) < 2){
-    array_push($error_array, "First Name Must Be Between 2 and 25 characteres <br>");
+    array_push($error_array,"First Name Must Be Between 2 and 25 characteres <br>");
   }
   if (strlen($lname) > 25 || strlen($lname) < 2){
-    array_push($error_array, "last Name Must Be Between 2 and 25 characteres <br>");
+    array_push($error_array,"last Name Must Be Between 2 and 25 characteres <br>");
   }
   if ($psd != $psd2) {
-    array_push($error_array, "Password do not match <br>");
+    array_push($error_array,"Password do not match <br>");
   }
   if (strlen($psd) > 30 || strlen($psd)< 3) {
-      array_push($error_array, "password Must between 5 and 30 characteres <br>");
+      array_push($error_array,"password Must between 5 and 30 characteres <br>");
   }
   $e_check2 = mysqli_query($con, "SELECT username FROM users wHERE username ='$username'");
 
@@ -76,7 +76,7 @@ if ($num_rows > 0) {
   $num_rows2 = mysqli_num_rows($e_check2);
 
   if ($num_rows2> 0) {
-       array_push($error_array, "Username Already used <br>");
+       array_push($error_array,"Username Already used <br>");
   }
 
 

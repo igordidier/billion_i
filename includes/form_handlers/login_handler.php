@@ -1,5 +1,5 @@
 <?php
-
+$error_array2 = array();
 if (isset($_POST['login_button'])) {
   $email = filter_var($_POST['log_email'], FILTER_SANITIZE_EMAIL); //sanitize Email
 
@@ -20,7 +20,7 @@ if (isset($_POST['login_button'])) {
 
     header("location: index.php");
   }else {
-    array_push($error_array,"Email or Password Incorrect");
+    array_push($error_array2,"Email or Password Incorrect");
   }
 }
 

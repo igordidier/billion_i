@@ -41,7 +41,7 @@ require 'includes/form_handlers/login_handler.php';
     </div>
 
     <form class="" action="register.php" method="post">
-              <?php include('config/errors.php'); ?>
+              <?php include('config/errors2.php'); ?>
               <input type="email" name="log_email" placeholder="Email Adresse" value="<?php if (isset($_SESSION['login_email'])) {
                 echo $_SESSION['reg_email'];
               } ?>" required >
