@@ -122,6 +122,23 @@ input[type=password] {
   margin-top: 15px;
   margin-bottom: : 15px;
 }
+.signin{
+  text-align: center;
+  margin: auto;
+  display: flex;
+  text-decoration: none;
+  color: steelblue;
+  font-family: cursive;
+}
+
+.signup{
+  text-align: center;
+  margin: auto;
+  display: flex;
+  text-decoration: none;
+  color: steelblue;
+  font-family: cursive;
+}
 
 
 .rightbanner{
@@ -130,6 +147,7 @@ input[type=password] {
      width: 30%;
      position: absolute;
      left: 0px;
+     top: 25px;
 }
 
 .logo{
@@ -142,4 +160,9 @@ input[type=password] {
      width: 30%;
      position: absolute;
      right: 0px;
+     top: 25px;
+}
+
+#second{
+  display: none;
 }
