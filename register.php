@@ -7,7 +7,7 @@ require 'includes/form_handlers/login_handler.php';
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Sigh Up</title>
+    <title>Welcome</title>
     <link rel="stylesheet" href="assets/css/register_style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="assets/js/register.js">
