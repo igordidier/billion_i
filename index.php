@@ -19,6 +19,7 @@ if (!isset($_SESSION['username'])) {
   <head>
     <meta charset="utf-8">
     <title>Billi</title>
+    <?php include "includes/boot.html"; ?>
   </head>
   <body>
     <?php include("includes/header.php") ?>
