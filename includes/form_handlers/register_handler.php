@@ -89,11 +89,12 @@ if (empty($error_array)) {
   $rand = rand(1,2); //random pic
 
   if ($rand == 1) {
-    $profile_pics = "assests/img/profile_pics/default/head_deep_blue.png";
-
+    $profile_pics = "assets/img/profile_pics/default/head_deep_blue.png";
+$_SESSION['profile_pic'] = $profile_pics;
   }
   elseif ($rand == 2) {
-      $profile_pics = "assests/img/profile_pics/default/head_alizarin.png";
+      $profile_pics = "assets/img/profile_pics/default/head_alizarin.png";
+
     }
 
 

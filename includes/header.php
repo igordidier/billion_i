@@ -1,3 +1,13 @@
+<?php if (isset($_SESSION['username'])){
+	// It is created when logged in(Check includes/form_handler/login_handler.php)
+	$userLoggedIn = $_SESSION['username'];
+	$user_details_query = mysqli_query($con, "SELECT * FROM users WHERE username='$userLoggedIn'");
+	$user = mysqli_fetch_array($user_details_query);
+}
+else{
+	header("Location: register.php");
+}
+?>
 <div class="header">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,3 +37,5 @@
   </div>
 </nav>
 </div>
+
+<div class="wrapper">

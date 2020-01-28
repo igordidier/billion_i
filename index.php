@@ -20,13 +20,21 @@ if (!isset($_SESSION['username'])) {
     <meta charset="utf-8">
     <title>Billi</title>
     <?php include "includes/boot.html"; ?>
+    <link rel="stylesheet" href="assets/css/index.css">
   </head>
   <body>
     <?php include("includes/header.php") ?>
 <?php if (isset($_SESSION['success'])){
 echo "You Have Created an account Correctly! welcome $_SESSION[reg_username]!";
 } ?>
+<div class="user_details colume">
 
+<a href="#">
+  <img src="<?php echo $user['profile_pic'] ?>" alt="Profile Picture">
+ </a>
 
+</div>
+
+</div>
   </body>
 </html>
