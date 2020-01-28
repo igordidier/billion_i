@@ -13,9 +13,9 @@ else{
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Billi</a>
+  <a class="navbar-brand" href="index.php">Billi</a>
 
-    <a class="navbar-brand" href="index.php">Idea</a>
+    <a class="navbar-brand" href="#">Idea</a>
 
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -31,7 +31,7 @@ else{
 
     <li class="nav-item active">
       <?php    echo '<a class="nav-link" href="logout.php">log out</a>';
-      echo '<a class="nav-link" href="profil.php">'.  ucfirst($_SESSION["username"]) . '</a>';
+      echo '<a class="nav-link" href="<?php echo $user[username]; ?>">'.  ucfirst($_SESSION["username"]) . '</a>';
       ?>
     </li>
   </div>

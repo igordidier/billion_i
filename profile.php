@@ -25,17 +25,7 @@ if (!isset($_SESSION['username'])) {
   <body>
     <?php include("includes/header.php") ?>
 
-<div class="main_collum">
-
-  <form class="post_form" action="billi.php" method="post">
-
-    <textarea name="post_text" rows="8" cols="80" placeholder="Quick word?"></textarea>
-    <input type="submit" name="post_button" value="Post">
-    <hr>
-
-  </form>
-
-</div>
+<p style="text-align: center;"> This is the profile page!!!</p>
 
 </div>
   </body>
