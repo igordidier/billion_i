@@ -15,7 +15,7 @@ else{
   </button>
   <a class="navbar-brand" href="index.php">Billi</a>
 
-    <a class="navbar-brand" href="#">Idea</a>
+    <a class="navbar-brand" href="index.php">Idea</a>
 
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -30,9 +30,8 @@ else{
 
 
     <li class="nav-item active">
-      <?php    echo '<a class="nav-link" href="logout.php">log out</a>';
-      echo '<a class="nav-link" href="<?php echo $user[username]; ?>">'.  ucfirst($_SESSION["username"]) . '</a>';
-      ?>
+    <a class="nav-link" href="logout.php">log out</a>
+    <a href="<?php echo $userLoggedIn; ?>"> <?php echo ucfirst($_SESSION["username"]); ?> </a>
     </li>
   </div>
 </nav>

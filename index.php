@@ -24,6 +24,9 @@ if (!isset($_SESSION['username'])) {
   </head>
   <body>
     <?php include("includes/header.php") ?>
+    <?php include("includes/classes/user.php") ?>
+
+
 
 <div class="main_collum">
 
