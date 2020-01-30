@@ -30,7 +30,7 @@ if (!isset($_SESSION['username'])) {
   include("includes/classes/post.php");
 
 if (isset($_POST['post'])) {
-  $post = new Post($conn, $userLoggedIn);
+  $post = new Post($con, $userLoggedIn);
   $post -> submitpost($_POST['post_text'], 'none');
 }
 

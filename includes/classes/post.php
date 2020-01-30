@@ -10,7 +10,7 @@ class Post {
 		$this->user_obj = new User($con, $user);
 	}
 
-	public function submitPost($body, $user_to, $imageName){
+	public function submitPost($body, $user_to){
 		$body = strip_tags($body);
 		//make string safe
 		$body = mysqli_real_escape_string($this->con, $body);
@@ -29,7 +29,7 @@ class Post {
       }
 
       //insert post
-      $query = mysqli_query($this->con, "INSERT INTO posts VALUES(NULL, '$body', '$added_by', '$user_to', '$date_added', 'no', 'no', '0', '$imageName')");
+      $query = mysqli_query($this->con, "INSERT INTO posts VALUES(NULL, '$body', '$added_by', '$user_to', '$date_added', 'no', 'no', '0')");
       $returned_id = mysqli_insert_id($this->con);
 
       //Update post count for user
