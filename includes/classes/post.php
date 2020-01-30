@@ -24,6 +24,9 @@ class Post {
       //current date(Year-Month-Day Hour-minutes-seconds)
       $date_added = date("Y-m-d H:i:s");
 
+			//Get username
+						$added_by = $this->user_obj->getUsername();
+
       if($user_to == $added_by){
         $user_to == 'none';
       }
