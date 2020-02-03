@@ -32,6 +32,7 @@ if (!isset($_SESSION['username'])) {
 if (isset($_POST['post'])) {
   $post = new Post($con, $userLoggedIn);
   $post -> submitpost($_POST['post_text'], 'none');
+  header("location: index.php");
 }
 
   ?>
