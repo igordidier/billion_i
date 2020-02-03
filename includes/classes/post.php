@@ -44,6 +44,11 @@ class Post {
     			$num_posts++; // add 1
     			$update_query = mysqli_query($this->con, "UPDATE users SET num_posts='$num_posts' WHERE username='$added_by'");
 
+
+			//Update post count for user
+					$num_posts = $this->user_obj->getNumPosts(); // get original num_posts
+			$num_posts++; // add 1
+			$update_query = mysqli_query($this->con, "UPDATE users SET num_posts='$num_posts' WHERE username='$added_by'");
           }
         }
   }
