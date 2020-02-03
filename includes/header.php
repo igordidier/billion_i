@@ -30,7 +30,7 @@ else{
 
 
     <li class="nav-item active">
-    <a class="nav-link" href="logout.php">log out</a>
+    <a class="nav-link" href="includes/handlers/logout.php">log out</a>
     <a href="<?php echo $userLoggedIn; ?>"> <?php echo ucfirst($_SESSION["username"]); ?> </a>
     </li>
   </div>
