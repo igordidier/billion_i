@@ -99,8 +99,9 @@ $_SESSION['profile_pic'] = $profile_pics;
 
 
       $query = mysqli_query($con,"INSERT INTO users(first_name,last_name,username,email,password,signup_date,profile_pic,num_posts,num_likes,num_follower,follow_array) VALUES('$fname','$lname','$username','$em','$psd','$date','$profile_pics','0','0','0',',')");
-$_SESSION['success'] = "You are now logged in";
-header('location: index.php');
+      $_SESSION['success'] = "You are now logged in";
+
+  header("location: index.php");
 
 }
 
