@@ -50,7 +50,16 @@ if (isset($_POST['post'])) {
 
   </form>
 
+
+<?php
+$post = new Post($con, $userLoggedIn);
+$post->loadpostfriends();
+ ?>
+
 </div>
+
+
+
 
 </div>
   </body>

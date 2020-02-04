@@ -52,43 +52,116 @@ class Post {
           }
         }
   }
-  //   //if whitespace(1 or more together) split with whitespace)
-	// 		$body_array =  preg_split("/\s+/", $body);
-  //
-	// 		foreach($body_array as $key => $value){
-  //
-	// 			if(strpos($value, "www.youtube.com/watch?v=") !== false){
-  //
-	// 				$link = preg_split("!&!", $value); // if video is in youtube playlist
-	// 				$value =  preg_replace("!watch\?v=!", "embed/", $value);
-	// 				$value = "<br><iframe width=\'420\' height=\'315\' src=\'".$value."\'></iframe><br>";
-	// 				//add this iframe value in key&value of $body_array
-	// 				$body_array[$key] = $value;
-	// 			}
-  //
-	// 		}
-  //
-	// 		//if there is no iframe(youtube) it doesn't matter
-	// 		$body = implode(" ", $body_array);
-  //
-  //
-	// 		//Get username
-	// 		$added_by = $this->user_obj->getUsername();
-  //
-	// 		//If user is on own profile, user_to is 'none'
-	// 		if($user_to == $added_by){
-	// 			$user_to == 'none';
-	// 		}
-  //
-  //
-  //
-	// 		//Insert notification
-	// 		if($user_to != 'none'){ // except for case when user posted userself
-	// 			$notification = new Notification($this->con, $added_by);
-	// 			$notification->insertNotification($returned_id, $user_to, "profile_post");
-	// 		}
-  //   }
-  // }
 
 
+	 function loadpostfriends(){
+		$str = ""; //String to return
+		$data = mysqli_query($this->con, "SELECT * FROM posts WHERE deleted='no' ORDER BY id DESC");
+
+		while($row = mysqli_fetch_array($data)){
+				$id = $row['id'];
+				$body = $row['body'];
+				$added_by = $row['added_by'];
+				$date_time = $row['date_added'];
+
+
+
+				$user_details_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM users WHERE username='$added_by'");
+					$user_row = mysqli_fetch_array($user_details_query);
+					$first_name = $user_row['first_name'];
+					$last_name = $user_row['last_name'];
+					$profile_pic = $user_row['profile_pic'];
+				// $imagePath = $row['image'];
+				// $like = mysqli_query($this->con, "SELECT * FROM likes WHERE post_id='$id' AND username='$userLoggedIn'");
+				// if(mysqli_num_rows($like)){
+				// 	$like_check = "unlike";
+
+// //Prepare user_to string so it can be included even if not posted to a user
+// 				if($row['user_to'] == "none" or $row['user_to'] == $userLoggedIn){
+// 					$user_to ='';
+// 				}
+// 				else{
+// 					$user_to_obj = new User($this->con, $row['user_to']);
+// 					$user_to_name = $user_to_obj->getFirstAndLastName();
+// 					$user_to = "to <a href='".$row['user_to']."'>".$user_to_name."</a>";
+// 				}
+
+	}
+
+	//Timeframes
+					$date_time_now = date("Y-m-d H:i:s");
+					$start_date = new DateTime($date_time); //Time of post
+					$end_date = new DateTime($date_time_now); //Current time
+					$interval = $start_date->diff($end_date); //Difference between dates
+
+					if($interval->y >= 1){
+						if($interval == 1){
+							$time_message = $interval->y." year ago"; //1 year ago
+						} else{
+							$time_message = $interval->y." years ago"; //1+ year ago
+						}
+					}
+					else if($interval->m >= 1){
+						if($interval->d == 0){
+							$days = " ago";
+						} else if($interval->d == 1){
+							$days = $interval->d." day ago";
+						} else{
+							$days = $interval->d." days ago";
+						}
+
+						if($interval->m == 1){
+							$time_message = $inverval->m." month".$days;
+						} else{
+							$time_message = $inverval->m." month".$days;
+						}
+					}
+					else if($interval->d >= 1){
+						if($interval->d == 1){
+							$time_message = "Yesterday";
+						} else{
+							$time_message = $interval->d." days ago";
+						}
+					}
+					else if($interval->h >= 1){
+						if($interval->h == 1){
+							$time_message = $interval->h." hour ago";
+						} else{
+							$time_message = $interval->h." hours ago";
+						}
+					}
+					else if($interval->i >= 1){
+						if($interval->i == 1){
+							$time_message = $interval->i." minute ago";
+						} else{
+							$time_message = $interval->i." minutes ago";
+						}
+					}
+					else {
+						if($interval->s < 30){
+							$time_message = "Just now";
+						} else{
+							$time_message = $interval->s." seconds ago";
+						}
+					}
+					$str .= "<div class='status_post' onClick='javascript:toggle$id(event)'>
+													<div class='post_profile_pic'>
+														<img src='$profile_pic' width='50'>
+													</div>
+													<div class='posted_by' style='color:#ACACAC;'>
+														<a href='$added_by'>
+															$first_name $last_name
+														</a>
+														 &nbsp;&nbsp;&nbsp;&nbsp; $time_message
+
+													</div>
+													<div id='post_body'>
+														$body
+														<br>
+
+													</div>"	;
+
+												}
+												echo $str;
+}
  ?>
