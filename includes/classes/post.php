@@ -51,10 +51,10 @@ class Post {
 			$update_query = mysqli_query($this->con, "UPDATE users SET num_posts='$num_posts' WHERE username='$added_by'");
           }
         }
-  }
 
 
-	 function loadpostfriends(){
+
+	  public function loadpostfriends(){
 		$str = ""; //String to return
 		$data = mysqli_query($this->con, "SELECT * FROM posts WHERE deleted='no' ORDER BY id DESC");
 
@@ -86,7 +86,7 @@ class Post {
 // 					$user_to = "to <a href='".$row['user_to']."'>".$user_to_name."</a>";
 // 				}
 
-	}
+
 
 	//Timeframes
 					$date_time_now = date("Y-m-d H:i:s");
@@ -161,7 +161,10 @@ class Post {
 
 													</div>"	;
 
-												}
-												echo $str;
+}
+
+echo $str;
+}
+
 }
  ?>
