@@ -66,10 +66,11 @@ class Post {
 
 
 
-				$user_details_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM users WHERE username='$added_by'");
+				$user_details_query = mysqli_query($this->con, "SELECT first_name, last_name, username, profile_pic FROM users WHERE username='$added_by'");
 					$user_row = mysqli_fetch_array($user_details_query);
 					$first_name = $user_row['first_name'];
 					$last_name = $user_row['last_name'];
+					$username = $user_row['username'];
 					$profile_pic = $user_row['profile_pic'];
 				// $imagePath = $row['image'];
 				// $like = mysqli_query($this->con, "SELECT * FROM likes WHERE post_id='$id' AND username='$userLoggedIn'");
@@ -144,21 +145,29 @@ class Post {
 							$time_message = $interval->s." seconds ago";
 						}
 					}
-					$str .= "<div class='status_post' onClick='javascript:toggle$id(event)'>
+					$str .= "
+
+					<div class='status_post' onClick='javascript:toggle$id(event)'>
 													<div class='post_profile_pic'>
-														<img src='$profile_pic' width='50'>
+													<a href='$added_by'>
+														<img class='profile_pic' src='$profile_pic' width='50'>
+													</a>
+
 													</div>
 													<div class='posted_by' style='color:#ACACAC;'>
 														<a href='$added_by'>
-															$first_name $last_name
+															$username
 														</a>
-														 &nbsp;&nbsp;&nbsp;&nbsp; $time_message
 
+</div>
 													</div>
-													<div id='post_body'>
-														$body
+													<div class='post_body'>
+														<p class='tetx_post'>$body</p>
 														<br>
 
+													</div>
+													<div id='time'>
+													$time_message
 													</div>"	;
 
 }

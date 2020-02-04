@@ -15,22 +15,22 @@ if (isset($_POST['register_button'])) {
   $username = strip_tags($_POST['reg_username']); //remove html tags
   $username = str_replace(' ','', $username); //remove space
   $username = ucfirst(strtolower($username));
-  $_SESSION['reg_username'] = $username;
+  $_SESSION['username'] = $username;
 
   $fname = strip_tags($_POST['reg_fname']); //remove html tags
   $fname = str_replace(' ','', $fname); //remove space
   $fname = ucfirst(strtolower($fname));
-  $_SESSION['reg_fname'] = $fname;
+  $_SESSION['fname'] = $fname;
 
   $lname = strip_tags($_POST['reg_lname']); //remove html tags
   $lname = str_replace(' ','', $lname); //remove space
   $lname = ucfirst(strtolower($lname));
-  $_SESSION['reg_lname'] = $lname;
+  $_SESSION['lname'] = $lname;
 
   $em = strip_tags($_POST['reg_email']); //remove html tags
   $em = str_replace(' ','', $em); //remove space
   $em = ucfirst(strtolower($em));
-  $_SESSION['reg_email'] = $em;
+  $_SESSION['email'] = $em;
 
   $psd = strip_tags($_POST['reg_psd']); //remove html tags
   $psd2 = strip_tags($_POST['reg_psd2']); //remove html tags
