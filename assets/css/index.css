@@ -129,12 +129,14 @@ input[type=button], input[type=submit], input[type=reset] {
   padding: 15px;
 }
 .post_collum{
-  border-left: 2px solid;
-    border-right: 2px solid;
-    border-top: 2px solid;
+
     padding: 20px;
 }
 
+.full_post{
+    margin: 10px;
+
+}
 .post_body{
   margin: auto;
     display: flex;
@@ -144,9 +146,15 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 
 .tetx_post{
-  text-align: center;
-  position: relative;
-  width: auto;
-  top: 50%;
-width: 100%;
+  display: flex;
+justify-content: center;
+align-items: center;
+padding: 15px;
+font-family: sans-serif;
+font-size: 20px;
+text-align: center;
+}
+
+#time{
+  float: right;
 }

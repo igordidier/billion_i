@@ -44,9 +44,10 @@ if (isset($_POST['post'])) {
 
   <form class="post_form" action="index.php" method="post">
 
-    <textarea name="post_text" rows="8" cols="80" placeholder="Quick word?"></textarea>
+    <textarea name="post_text" rows="8" cols="80" placeholder="Quick word?" maxlength="750"></textarea>
     <input type="submit" name="post" value="Post">
     <hr>
+
 
   </form>
 

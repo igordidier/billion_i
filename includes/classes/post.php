@@ -20,7 +20,7 @@ class Post {
 		$body = nl2br($body);
 		//check if blank, delete
 		$check_empty = preg_replace('/\s+/', '', $body);
-
+		$error_array3= "";
 
 
 
@@ -34,6 +34,8 @@ class Post {
       if($user_to == $added_by){
         $user_to == 'none';
       }
+
+if (strlen($body) < 750 || strlen($body) > 1) {
 
       //insert post
       $query = mysqli_query($this->con, "INSERT INTO posts VALUES(NULL, '$body', '$added_by', '$user_to', '$date_added', 'no', 'no', '0')");
@@ -49,9 +51,12 @@ class Post {
 					$num_posts = $this->user_obj->getNumPosts(); // get original num_posts
 			$num_posts++; // add 1
 			$update_query = mysqli_query($this->con, "UPDATE users SET num_posts='$num_posts' WHERE username='$added_by'");
-          }
-        }
+		} 						else {
+											echo "Post Must Be Between 1 and 750 characteres <br>";
+											}
 
+			  }
+}
 
 
 	  public function loadpostfriends(){
@@ -154,12 +159,13 @@ class Post {
 													</a>
 
 
+
 														<a href='$added_by'>
 															$username
 														</a>
 
+														<span id='time'>$time_message</span>
 
-														$time_message
 													</div>
 													<div class='post_body'>
 														<p class='tetx_post'>$body</p>
