@@ -60,8 +60,23 @@ if (strlen($body) < 750 || strlen($body) > 1) {
 
 
 	  public function loadpostfriends(){
-		$str = ""; //String to return
-		$data = mysqli_query($this->con, "SELECT * FROM posts WHERE deleted='no' ORDER BY id DESC");
+
+			$page = $data['page'];
+			$userLoggedIn = $this->user_obj->getUsername();
+
+			if($page == 1)
+				$start = 0;
+			else
+				$start = ($page - 1) * $limit;
+
+				$str = ""; //String to return
+				$data_query = mysqli_query($this->con, "SELECT * FROM posts WHERE deleted='no' ORDER BY id DESC");
+
+				if(mysqli_num_rows($data_query) > 0) {
+
+
+					$num_iterations = 0; //Number of results checked (not necasserily posted)
+					$count = 1;
 
 		while($row = mysqli_fetch_array($data)){
 				$id = $row['id'];
@@ -69,7 +84,17 @@ if (strlen($body) < 750 || strlen($body) > 1) {
 				$added_by = $row['added_by'];
 				$date_time = $row['date_added'];
 
+				if($num_iterations++ < $start)
+					continue;
 
+
+				//Once 10 posts have been loaded, break
+				if($count > $limit) {
+					break;
+				}
+				else {
+					$count++;
+				}
 
 				$user_details_query = mysqli_query($this->con, "SELECT first_name, last_name, username, profile_pic FROM users WHERE username='$added_by'");
 					$user_row = mysqli_fetch_array($user_details_query);
@@ -77,6 +102,8 @@ if (strlen($body) < 750 || strlen($body) > 1) {
 					$last_name = $user_row['last_name'];
 					$username = $user_row['username'];
 					$profile_pic = $user_row['profile_pic'];
+
+
 				// $imagePath = $row['image'];
 				// $like = mysqli_query($this->con, "SELECT * FROM likes WHERE post_id='$id' AND username='$userLoggedIn'");
 				// if(mysqli_num_rows($like)){
@@ -175,6 +202,12 @@ if (strlen($body) < 750 || strlen($body) > 1) {
 													</div>
 													"	;
 
+}
+if($count > $limit)
+	$str .= "<input type='hidden' class='nextPage' value='" . ($page + 1) . "'>
+				<input type='hidden' class='noMorePosts' value='false'>";
+else
+	$str .= "<input type='hidden' class='noMorePosts' value='true'><p style='text-align: centre;'> No more posts to show! </p>";
 }
 
 echo $str;
