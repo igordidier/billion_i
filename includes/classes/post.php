@@ -148,18 +148,16 @@ class Post {
 					$str .= "
 
 					<div class='status_post' onClick='javascript:toggle$id(event)'>
-													<div class='post_profile_pic'>
+													
 													<a href='$added_by'>
 														<img class='profile_pic' src='$profile_pic' width='50'>
 													</a>
 
-													</div>
-													<div class='posted_by' style='color:#ACACAC;'>
+
 														<a href='$added_by'>
 															$username
 														</a>
 
-</div>
 													</div>
 													<div class='post_body'>
 														<p class='tetx_post'>$body</p>
