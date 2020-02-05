@@ -146,9 +146,9 @@ class Post {
 						}
 					}
 					$str .= "
-
+<div class='full_post'>
 					<div class='status_post' onClick='javascript:toggle$id(event)'>
-													
+
 													<a href='$added_by'>
 														<img class='profile_pic' src='$profile_pic' width='50'>
 													</a>
@@ -158,15 +158,16 @@ class Post {
 															$username
 														</a>
 
+
+														$time_message
 													</div>
 													<div class='post_body'>
 														<p class='tetx_post'>$body</p>
 														<br>
 
 													</div>
-													<div id='time'>
-													$time_message
-													</div>"	;
+													</div>
+													"	;
 
 }
 
