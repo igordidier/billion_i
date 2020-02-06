@@ -28,6 +28,7 @@ if (!isset($_SESSION['username'])) {
   include("includes/header.php");
   include("includes/classes/user.php");
   include("includes/classes/post.php");
+  include("assets/js/jquery.js");
 
 if (isset($_POST['post'])) {
   $post = new Post($con, $userLoggedIn);
