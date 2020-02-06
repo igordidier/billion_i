@@ -12,22 +12,22 @@ $error_array= array();
 
 if (isset($_POST['register_button'])) {
   // register form
-  $username = strip_tags($_POST['reg_username']); //remove html tags
+  $username = strip_tags($_POST['username']); //remove html tags
   $username = str_replace(' ','', $username); //remove space
   $username = ucfirst(strtolower($username));
   $_SESSION['username'] = $username;
 
-  $fname = strip_tags($_POST['reg_fname']); //remove html tags
+  $fname = strip_tags($_POST['fname']); //remove html tags
   $fname = str_replace(' ','', $fname); //remove space
   $fname = ucfirst(strtolower($fname));
   $_SESSION['fname'] = $fname;
 
-  $lname = strip_tags($_POST['reg_lname']); //remove html tags
+  $lname = strip_tags($_POST['lname']); //remove html tags
   $lname = str_replace(' ','', $lname); //remove space
   $lname = ucfirst(strtolower($lname));
   $_SESSION['lname'] = $lname;
 
-  $em = strip_tags($_POST['reg_email']); //remove html tags
+  $em = strip_tags($_POST['email']); //remove html tags
   $em = str_replace(' ','', $em); //remove space
   $em = ucfirst(strtolower($em));
   $_SESSION['email'] = $em;

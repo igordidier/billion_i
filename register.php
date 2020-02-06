@@ -64,20 +64,20 @@ require 'includes/form_handlers/login_handler.php';
     </div>
           <form class="" action="register.php" method="post">
                 <?php include('config/errors.php'); ?>
-                  <input type="text" name="reg_username" placeholder="Usename" value="<?php if (isset($_SESSION['reg_username'])) {
-                    echo $_SESSION['reg_username'];
+                  <input type="text" name="username" placeholder="Usename" value="<?php if (isset($_SESSION['username'])) {
+                    echo $_SESSION['username'];
                   } ?>" required>
                   <br>
-                  <input type="text" name="reg_fname" placeholder="firstname" value="<?php if (isset($_SESSION['reg_fname'])) {
-                    echo $_SESSION['reg_fname'];
+                  <input type="text" name="fname" placeholder="firstname" value="<?php if (isset($_SESSION['fname'])) {
+                    echo $_SESSION['fname'];
                   } ?>" required>
                   <br>
-                  <input type="text" name="reg_lname" placeholder="lastname" value="<?php if (isset($_SESSION['reg_lname'])) {
-                    echo $_SESSION['reg_lname'];
+                  <input type="text" name="lname" placeholder="lastname" value="<?php if (isset($_SESSION['lname'])) {
+                    echo $_SESSION['lname'];
                   } ?>" required>
                   <br>
-                  <input type="email" name="reg_email" placeholder="email" value="<?php if (isset($_SESSION['reg_email'])) {
-                    echo $_SESSION['reg_email'];
+                  <input type="email" name="email" placeholder="email" value="<?php if (isset($_SESSION['email'])) {
+                    echo $_SESSION['email'];
                   } ?>" required>
                   <br>
                   <input type="password" name="reg_psd" placeholder="Password" required>
