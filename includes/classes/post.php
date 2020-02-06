@@ -66,6 +66,7 @@ class Post {
 				$added_by = $row['added_by'];
 				$date_time = $row['date_added'];
 
+
 				//Prepare user_to string so it can be included even if not posted to a user
 				if($row['user_to'] == "none") {
 					$user_to = "";
@@ -78,9 +79,9 @@ class Post {
 
 				//Check if user who posted, has their account closed
 				$added_by_obj = new User($this->con, $added_by);
-				if($added_by_obj->isClosed()) {
-					continue;
-				}
+				// if($added_by_obj->isClosed()) {
+				// 	continue;
+				// }
 
 
 
@@ -176,7 +177,7 @@ class Post {
 
 
 																			<a href='$added_by'>
-																				$username
+																				$added_by
 																			</a>
 
 					 														<span id='time'>$time_message</span>
