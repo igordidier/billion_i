@@ -81,7 +81,8 @@ class Post {
 				// 	continue;
 				// }
 
-
+				$user_logged_obj = new User($this->con, $userLoggedIn);
+							if($user_logged_obj->isFollowing($added_by)){
 
 					if($num_iterations++ < $start)
 						continue;
@@ -188,7 +189,7 @@ class Post {
 					 													</div>
 					 													</div>
 																"	;
-
+}
 
 			} //End while loop
 
