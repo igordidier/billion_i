@@ -40,7 +40,16 @@ class User {
 
 
 
+	public function isFollowing($username_to_check){
+			$usernameComma = ",".$username_to_check.",";
 
+			// if usernameComma is in user['friend_array'] or $username_to_check is you
+			if((strstr($this->user['follow_array'], $usernameComma) || $username_to_check == $this->user['username'])){
+				return true;
+			} else{
+				return false;
+			}
+		}
 
 
 }
