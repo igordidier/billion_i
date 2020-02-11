@@ -15,7 +15,7 @@ else{
   </button>
   <a class="navbar-brand" href="index.php">Billi</a>
 
-    <a class="navbar-brand" href="index.php">Idea</a>
+    <a class="navbar-brand" href="all.php">All Page</a>
 
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
