@@ -135,6 +135,8 @@ input[type=button], input[type=submit], input[type=reset] {
 
 .full_post{
     margin: 10px;
+    padding: 10px;
+border: 2.3px solid;
 
 }
 .post_body{
@@ -154,8 +156,33 @@ input[type=button], input[type=submit], input[type=reset] {
   font-family: sans-serif;
   font-size: 20px;
   text-align: center;
+  margin: auto;
+
 }
 
 #time{
   float: right;
+}
+
+.comment_section{
+
+width: 100%;
+padding: 10px;
+border: 1px solid;
+
+}
+
+#comment_iframe{
+  width: 100%;
+
+}
+
+.comment_time{
+float: right;
+
+}
+
+.comment_body{
+  padding: 10px;
+
 }
