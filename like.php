@@ -85,7 +85,9 @@
 	//if I already checked like on this post
 	if($num_rows > 0){
 		echo ('<form action="like.php?post_id='.$post_id.'" method="POST">
-				  <input type="submit" id="liked" name="unlike_button" value="Unlike" >
+	<button type="submit" name="unlike_button">
+<img src="assets/img/icons/bump_liked.png" />
+</button>
 				  <div class="like_value">
 				  	'.$total_likes.'
 				  </div>
@@ -95,9 +97,11 @@
 	// if I didn't check like on this post yet
 	else{
 		echo ('<form action="like.php?post_id='.$post_id.'" method="POST">
-				  <input type="submit" class="comment_like" name="like_button" value="like">
+		<button type="submit" name="like_button">
+	<img src="assets/img/icons/bump.png" />
+	</button>
 				  <div class="like_value">
-				  	'.$total_likes.' 
+				  	'.$total_likes.'
 				  </div>
 			  </form>
 		');

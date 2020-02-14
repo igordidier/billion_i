@@ -82,7 +82,7 @@
 	?>
 
 	<form action="comment_frame.php?post_id=<?= $post_id?>" id="comment_form" name="postComment<?= $post_id; ?>" method="POST">
-		<textarea name="post_body"></textarea>
+		<textarea id="Comment_text" name="post_body"></textarea>
 		<input type="submit" name="postComment<?= $post_id; ?>" value="Post"/>
 	</form>
 
@@ -164,7 +164,7 @@
 				<a href="<?= $posted_by ?>" target="_parent"><img src="<?= $user_obj->getProfilePic(); ?>" title="<?= $posted_by ?>" style="float:left;" height="30px"></a>
 				<a href="<?= $posted_by ?>" target="_parent"><b><?= $user_obj->getUsername(); ?></b></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;  <p class="comment_time"> <?= $time_message; ?> </p> <p class="comment_body"> <?= $comment_body; ?> </p>
-				
+
 			</div>
 
 			<?php

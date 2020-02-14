@@ -184,9 +184,10 @@ float: right;
 
 .comment_body{
   padding: 10px;
+  flex-wrap: wrap;
 
 }
-#liked{
+/* #liked{
 
     background: url(assets/img/icons/bump_liked.png);
     border: 0;
@@ -194,4 +195,15 @@ float: right;
     height: _the_image_height;
     width: _the_image_width;
 
+} */
+
+#Comment_text{
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+
+  resize: none;
 }
