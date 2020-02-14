@@ -85,7 +85,7 @@
 	//if I already checked like on this post
 	if($num_rows > 0){
 		echo ('<form action="like.php?post_id='.$post_id.'" method="POST">
-				  <input type="submit" id="liked" name="unlike_button"  >
+				  <input type="submit" id="liked" name="unlike_button" value="Unlike" >
 				  <div class="like_value">
 				  	'.$total_likes.'
 				  </div>
@@ -97,7 +97,7 @@
 		echo ('<form action="like.php?post_id='.$post_id.'" method="POST">
 				  <input type="submit" class="comment_like" name="like_button" value="like">
 				  <div class="like_value">
-				  	'.$total_likes.' Like
+				  	'.$total_likes.' 
 				  </div>
 			  </form>
 		');
