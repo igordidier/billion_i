@@ -186,3 +186,12 @@ float: right;
   padding: 10px;
 
 }
+#liked{
+
+    background: url(assets/img/icons/bump_liked.png);
+    border: 0;
+    display: block;
+    height: _the_image_height;
+    width: _the_image_width;
+
+}

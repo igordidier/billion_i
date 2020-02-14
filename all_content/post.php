@@ -121,6 +121,9 @@ class Post {
 
 					<?php
 
+					$comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id='$id'");
+										$comments_check_num = mysqli_num_rows($comments_check);
+
 					//Timeframe
 					$date_time_now = date("Y-m-d H:i:s");
 					$start_date = new DateTime($date_time); //Time of post
@@ -186,31 +189,37 @@ class Post {
 					}
 
 					$str .= "		 <div class='full_post'onClick='javascript:toggle$id()'>
-										<div class='status_post' >
+					 					<div class='status_post' >
 
-																		<a href='$added_by'>
-																			<img class='profile_pic' src='$profile_pic' width='50'>
-																		</a>
+					 													<a href='$added_by'>
+					 														<img class='profile_pic' src='$profile_pic' width='50'>
+					 													</a>
 
 
 																			<a href='$added_by'>
 																				$added_by
 																			</a>
 
-																			<span id='time'>$time_message</span>
+					 														<span id='time'>$time_message</span>
 
-																		</div>
-																		<div class='post_body'>
-																			<p class='tetx_post'>$body</p>
-																			<br>
+					 													</div>
+					 													<div class='post_body'>
+					 														<p class='tetx_post'>$body</p>
+					 														<br>
 
 
-																		</div>
-																		</div>
+					 													</div>
+																		<div class='newsfeedPostOptions'>
+									Comments($comments_check_num)&nbsp;&nbsp;&nbsp;
+										<iframe src='../like.php?post_id=$id'  frameborder='0' ></iframe>
+								</div>
 																		<div class='post_comment' id='toggleComment$id' style='display:none;'>
-								<iframe src='../../comment_frame.php?post_id=$id' id='comment_iframe' frameborder='0' scrolling='yes'></iframe>
+								<iframe src='../comment_frame.php?post_id=$id' id='comment_iframe' frameborder='0' ></iframe>
 							</div>
+																		</div>
+
 																"	;
+
 
 			} //End while loop
 
