@@ -137,6 +137,7 @@ input[type=button], input[type=submit], input[type=reset] {
     margin: 10px;
     padding: 10px;
 border: 2.3px solid;
+    border-radius: 15px;
 
 }
 .post_body{
