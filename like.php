@@ -63,8 +63,8 @@
 
 		//insert notifications
 		if($user_liked != $userLoggedIn){
-			$notification = new Notification($con, $userLoggedIn);
-			$notification->insertNotification($post_id, $user_liked, "like");
+			// $notification = new Notification($con, $userLoggedIn);
+			// $notification->insertNotification($post_id, $user_liked, "like");
 		}
 	}
 	//Unlike Button
@@ -85,8 +85,10 @@
 	//if I already checked like on this post
 	if($num_rows > 0){
 		echo ('<form action="like.php?post_id='.$post_id.'" method="POST">
-	<button type="submit" name="unlike_button">
-<img src="assets/img/icons/bump_liked.png" />
+	<button type="submit" name="unlike_button" classe="like_bottom">
+	<img  src="assets/img/icons/bump_liked.png" style="
+	    width: 30px;
+	">
 </button>
 				  <div class="like_value">
 				  	'.$total_likes.'
@@ -97,8 +99,10 @@
 	// if I didn't check like on this post yet
 	else{
 		echo ('<form action="like.php?post_id='.$post_id.'" method="POST">
-		<button type="submit" name="like_button">
-	<img src="assets/img/icons/bump.png" />
+		<button type="submit" name="like_button" classe="like_bottom">
+		<img  src="assets/img/icons/bump.png" style="
+	    width: 30px;
+	">
 	</button>
 				  <div class="like_value">
 				  	'.$total_likes.'

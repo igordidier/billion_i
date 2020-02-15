@@ -208,3 +208,8 @@ float: right;
 
   resize: none;
 }
+
+.like_bottom{
+  background-color: white;
+border: 0px;
+}
