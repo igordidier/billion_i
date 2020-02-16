@@ -213,3 +213,8 @@ float: right;
   background-color: white;
 border: 0px;
 }
+
+.like_value{
+  float: right;
+margin: 10px;
+}

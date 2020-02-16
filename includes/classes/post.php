@@ -209,7 +209,7 @@ $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id
 					 													</div>
 																		<div class='newsfeedPostOptions'>
 									Comments($comments_check_num)&nbsp;&nbsp;&nbsp;
-										<iframe src='../../like.php?post_id=$id'  frameborder='0' ></iframe>
+									<iframe src='../like.php?post_id=$id'  frameborder='0' style='height: 40px;width: 100px;' scrolling='no'></iframe>
 								</div>
 																		<div class='post_comment' id='toggleComment$id' style='display:none;'>
 								<iframe src='../../comment_frame.php?post_id=$id' id='comment_iframe' frameborder='0' ></iframe>

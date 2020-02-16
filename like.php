@@ -84,27 +84,25 @@
 
 	//if I already checked like on this post
 	if($num_rows > 0){
-		echo ('<form action="like.php?post_id='.$post_id.'" method="POST">
-	<button type="submit" name="unlike_button" classe="like_bottom">
+		echo ('<form action="like.php?post_id=20" method="POST" style="margin: 10px;">
+	<button type="submit" name="unlike_button" style="border: 0px;background-color: transparent;">
 	<img  src="assets/img/icons/bump_liked.png" style="
 	    width: 30px;
 	">
 </button>
-				  <div class="like_value">
-				  	'.$total_likes.'
-				  </div>
+<div style="margin: 10px;float: right;">
+					'.$total_likes.'
+				</div>
 			  </form>
 		');
 	}
 	// if I didn't check like on this post yet
 	else{
-		echo ('<form action="like.php?post_id='.$post_id.'" method="POST">
-		<button type="submit" name="like_button" classe="like_bottom">
-		<img  src="assets/img/icons/bump.png" style="
-	    width: 30px;
-	">
+		echo ('<form action="like.php?post_id=20" method="POST" style="margin: 10px;">
+		<button type="submit" name="like_button" style="border: 0px;background-color: transparent;">
+		<img  src="assets/img/icons/bump.png" style="width: 30px;">
 	</button>
-				  <div class="like_value">
+	<div style="margin: 10px;float: right;">
 				  	'.$total_likes.'
 				  </div>
 			  </form>
