@@ -15,7 +15,7 @@ if (isset($_GET['profile_username'])) {
   $user_details_query = mysqli_query($con,"SELECT * FROM users WHERE username ='$username'  " );
   $user_array = mysqli_fetch_array($user_details_query);
 
-  $num_followers = (substr_count($user_array['follow_array'], ",")) -1;
+  $num_followers = (substr_count($user_array['followers'], ",")) -1;
 }
  ?>
 
@@ -32,19 +32,24 @@ if (isset($_GET['profile_username'])) {
     <?php include("includes/header.php") ?>
 
     <div class="profile_left">
-        <img src="<?php echo $user_array['profile_pic']; ?>" alt="profil picture">
+      <span style="text-align: center;"><?php echo $username; ?></span>
+      <br>
+
+        <img class="profile_pic_profile" src="<?php echo $user_array['profile_pic']; ?>" alt="profil picture">
+
+
             <div class="profil_info">
-              <?php echo $username; ?>
-                <p>
-                  <?php echo $user_array['num_posts']; ?>
-                  <br>  
-                  <?php echo $num_followers; ?>
-                </p>
+
+<ul class="profil_stat">
+  <li>Post: <?php echo $user_array['num_posts']; ?> </li>
+  <li>Followers: <?php echo $num_followers; ?></li>
+</ul>
+
             </div>
 
     </div>
 
-<p style="text-align: center;"> This is the profile page!!!</p>
+
 
 
 </div>

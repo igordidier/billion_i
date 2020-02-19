@@ -161,7 +161,7 @@
 			?>
 
 			<div class="comment_section">
-				<a href="<?= $posted_by ?>" target="_parent"><img src="<?= $user_obj->getProfilePic(); ?>" title="<?= $posted_by ?>" style="float:left;" height="30px"></a>
+				<a href="<?= $posted_by ?>" target="_parent"><img  class="profile_pic_profile"src="<?= $user_obj->getProfilePic(); ?>" title="<?= $posted_by ?>" style="float:left;" height="30px"></a>
 				<a href="<?= $posted_by ?>" target="_parent"><b><?= $user_obj->getUsername(); ?></b></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;  <p class="comment_time"> <?= $time_message; ?> </p> <p class="comment_body"> <?= $comment_body; ?> </p>
 

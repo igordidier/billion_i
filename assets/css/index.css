@@ -120,7 +120,8 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 
 .profile_pic{
-  border-radius: 50px;
+  border-radius: 50%;
+    border: 4px solid #4191fe;
     width: 5vw;
 }
 
@@ -217,4 +218,29 @@ border: 0px;
 .like_value{
   float: right;
 margin: 10px;
+}
+
+.profile_left{
+
+
+    position: absolute;
+
+    display: flex;
+    margin: auto;
+    padding: 15px;
+    border: 2px solid;
+    top: 80px;
+    width: 75%;
+}
+
+.profile_pic_profile{
+  border-radius: 50%;
+    border: 4px solid #4191fe;
+        float: left;
+}
+
+.profil_stat li{
+  display: flex;
+  justify-content: center;
+
 }
