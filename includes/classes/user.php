@@ -27,16 +27,16 @@ class User {
 		return $row['first_name'] . " " . $row['last_name'];
 	}
 
-	// public function isClosed() {
-	// 	$username = $this->user['username'];
-	// 	$query = mysqli_query($this->con, "SELECT user_closed FROM users WHERE username='$username'");
-	// 	$row = mysqli_fetch_array($query);
-	//
-	// 	if($row['user_closed'] == 'yes')
-	// 		return true;
-	// 	else
-	// 		return false;
-	// }
+	public function isClosed() {
+		$username = $this->user['username'];
+		$query = mysqli_query($this->con, "SELECT user_closed FROM users WHERE username='$username'");
+		$row = mysqli_fetch_array($query);
+
+		if($row['user_closed'] == 'yes')
+			return true;
+		else
+			return false;
+	}
 
 
 		public function getProfilePic(){
@@ -58,6 +58,27 @@ class User {
 				return false;
 			}
 		}
+
+		public function follow(){
+		$user_from = $this->user['username'];
+		$query = mysqli_query($this->con, "INSERT INTO users ");
+	}
+
+		public function removeFriend($user_to_remove){
+		$logged_in_user = $this->user['username'];
+
+		$query = mysqli_query($this->con, "SELECT follow_array FROM users WHERE username='$user_to_remove'");
+		$row = mysqli_fetch_array($query);
+		$friend_array_username = $row['follow_array'];
+
+		// make new array what replace user to blank in my friend_array
+		$new_friend_array = str_replace($user_to_remove.",", "", $this->user['follow_array']);
+		$remove_friend = mysqli_query($this->con, "UPDATE users SET follow_array='$new_friend_array' WHERE username='$logged_in_user'");
+
+		// make new array what replace user to blank in this friend_array
+		$new_friend_array = str_replace($this->user['username'].",", "", $friend_array_username);
+		$remove_friend = mysqli_query($this->con, "UPDATE users SET follow_array='$new_friend_array' WHERE username='$user_to_remove'");
+	}
 
 
 }
