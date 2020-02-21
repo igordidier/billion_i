@@ -15,7 +15,7 @@ if (isset($_GET['profile_username'])) {
   $user_details_query = mysqli_query($con,"SELECT * FROM users WHERE username ='$username'  " );
   $user_array = mysqli_fetch_array($user_details_query);
 
-  $num_followers = (substr_count($user_array['followers'], ",")) -1;
+
 }
  ?>
 
@@ -35,16 +35,19 @@ if (isset($_GET['profile_username'])) {
     include("includes/classes/post.php");
     include("assets/js/jquery.js");
 
-
+    
     if(isset($_POST['remove_friend'])){
-    	$user = new USER($con, $userLoggedIn);
-    	$user->removefriend($username);
+      $user = new USER($con, $userLoggedIn);
+      $user->removefriend($username);
     }
 
     if(isset($_POST['add_friend'])){
-    	$user = new USER($con, $userLoggedIn);
-    	$user->follow($username);
+      $user = new USER($con, $userLoggedIn);
+      $user->follow($username);
     }
+    $num_followers = (substr_count($user_array['followers'], ",")) -1;
+
+
     ?>
 
     <div class="profile_left">
@@ -56,13 +59,7 @@ if (isset($_GET['profile_username'])) {
 
             <div class="profil_info">
 
-<ul class="profil_stat">
-  <li>Post: <?php echo $user_array['num_posts']; ?> </li>
-  <li>Followers: <?php echo $num_followers; ?></li>
-</ul>
-            </div>
-
-              <form class="follow_btn" action="<?php echo $username; ?>" method="post">
+              <form class="follow_form" action="<?php echo $username; ?>" method="post">
                 <?php
                 			$profile_user_obj = new User($con, $username);
                 			// If user is closed status go to user_closed page
@@ -75,7 +72,7 @@ if (isset($_GET['profile_username'])) {
                 			if($userLoggedIn != $username){ // if logged user is not same with username
 
                 				if($logged_in_user_obj->isFollowing($username)){ // if logged user is friend of target user
-                					echo '<input type="submit" name="remove_friend" class="danger" value="Unfollow"><br/>';
+                					echo '<input type="submit" name="remove_friend" class="follow_btn" value="Unfollow"><br/>';
                 				}
 
                 				// else if($logged_in_user_obj->didReceiveRequest($username)){
@@ -91,10 +88,19 @@ if (isset($_GET['profile_username'])) {
                 				}
 
                 			} else {
-                        echo '<input class="edit_btn" type="submit" name="edit"  value="Edit profile"><br/>';
+                        echo '<input class="follow_btn" type="submit" name="edit"  value="Edit profile"><br/>';
                       }
                 			?>
                 		</form>
+
+
+<ul class="profil_stat">
+  <li>Post: <?php echo $user_array['num_posts']; ?> </li>
+  <li>Followers: <?php echo $num_followers; ?></li>
+</ul>
+            </div>
+
+
     </div>
 
 

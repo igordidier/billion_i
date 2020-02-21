@@ -54,7 +54,7 @@
 
 	//Like Button
 	if(isset($_POST['like_button'])) {
-		
+
 		$query = mysqli_query($con, "UPDATE posts SET likes='$total_likes' WHERE id='$post_id'");
 		$total_user_likes++;
 		$user_likes = mysqli_query($con, "UPDATE user SET num_likes='$total_user_likes' WHERE username='$user_liked'");
@@ -69,9 +69,10 @@
 	}
 	//Unlike Button
 	if(isset($_POST['unlike_button'])) {
+
 		$total_likes--;
 		$query = mysqli_query($con, "UPDATE posts SET likes='$total_likes' WHERE id='$post_id'");
-		$total_user_likes--;
+
 		$user_likes = mysqli_query($con, "UPDATE user SET num_likes='$total_user_likes' WHERE username='$user_liked'");
 		//insert who like what post
 		$insert_user = mysqli_query($con, "DELETE FROM likes WHERE username='$userLoggedIn' AND post_id='$post_id'");
