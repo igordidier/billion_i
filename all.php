@@ -30,7 +30,7 @@ if (!isset($_SESSION['username'])) {
   include("all_content/post.php");
   include("assets/js/jquery.js");
 
-if (isset($_POST['post_all'])) {
+if (isset($_POST['post'])) {
   $post = new Post($con, $userLoggedIn);
   $post -> submitpost($_POST['post_text'], 'none');
   header("location: all.php");
@@ -43,10 +43,10 @@ if (isset($_POST['post_all'])) {
 
 <div class="main_collum">
 
-  <form class="post_form" action="all.php" method="post">
+  <form class="post_form" action="index.php" method="post">
 
     <textarea name="post_text" rows="8" cols="80" placeholder="Quick word?" maxlength="750"></textarea>
-    <input type="submit" name="post_all" value="Post">
+    <input type="submit" name="post" value="Post">
     <hr>
 
 
