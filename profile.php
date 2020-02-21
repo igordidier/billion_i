@@ -29,7 +29,23 @@ if (isset($_GET['profile_username'])) {
     <link rel="stylesheet" href="assets/css/index.css">
   </head>
   <body>
-    <?php include("includes/header.php") ?>
+    <?php
+    include("includes/header.php");
+    include("includes/classes/user.php");
+    include("includes/classes/post.php");
+    include("assets/js/jquery.js");
+
+
+    if(isset($_POST['remove_friend'])){
+    	$user = new USER($con, $userLoggedIn);
+    	$user->removefriend($username);
+    }
+    //
+    // if(isset($_POST['add_friend'])){
+    // 	$user = new USER($con, $userLoggedIn);
+    // 	$user->follow($username);
+    // }
+    ?>
 
     <div class="profile_left">
       <span style="text-align: center;"><?php echo $username; ?></span>
@@ -44,9 +60,41 @@ if (isset($_GET['profile_username'])) {
   <li>Post: <?php echo $user_array['num_posts']; ?> </li>
   <li>Followers: <?php echo $num_followers; ?></li>
 </ul>
-
             </div>
 
+              <form class="follow_btn" action="<?php echo $username; ?>" method="post">
+                <?php
+                			$profile_user_obj = new User($con, $username);
+                			// If user is closed status go to user_closed page
+                			if($profile_user_obj->isClosed()){
+                				header("Location: user_closed.php");
+                			}
+
+                			$logged_in_user_obj = new User($con, $userLoggedIn);
+
+                			if($userLoggedIn != $username){ // if logged user is not same with username
+
+                				if($logged_in_user_obj->isFollowing($username)){ // if logged user is friend of target user
+                					echo '<input type="submit" name="remove_friend" class="danger" value="Unfollow"><br/>';
+                				}
+
+                				// else if($logged_in_user_obj->didReceiveRequest($username)){
+                				// 	echo '<input type="submit" name="respond_request" class="warning" value="Respond to Request"><br/>';
+                				// }
+                        //
+                				// else if($logged_in_user_obj->didSendRequest($username)){
+                				// 	echo '<input type="submit" name="" class="default" value="Request Sent"><br/>';
+                				// }
+
+                				else{
+                					echo '<input class="follow_btn" type="submit" name="add_friend"  value="follow"><br/>';
+                				}
+
+                			} else {
+                        echo '<input class="edit_btn" type="submit" name="edit"  value="Edit profile"><br/>';
+                      }
+                			?>
+                		</form>
     </div>
 
 
