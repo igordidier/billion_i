@@ -59,9 +59,23 @@ class User {
 			}
 		}
 
-		public function follow(){
+		public function follow($user_to_follow){
 		$user_from = $this->user['username'];
-		$query = mysqli_query($this->con, "INSERT INTO users ");
+		$query = mysqli_query($this->con, "SELECT followers FROM users WHERE username='$user_to_follow'");
+		$row = mysqli_fetch_array($query);
+		$friend_array_username = $row['followers'];
+
+		$query2 = mysqli_query($this->con, "SELECT follow_array FROM users WHERE username='$user_from'");
+		$row2 = mysqli_fetch_array($query2);
+		$friend_array_username_get = $row2['follow_array'];
+
+		// make new array what replace user to blank in my friend_array
+		$new_friend_array = $row2['follow_array'] .$user_to_follow.",";
+		$remove_friend = mysqli_query($this->con, "UPDATE users SET follow_array='$new_friend_array' WHERE username='$user_from'");
+
+		// make new array what replace user to blank in this friend_array
+		$new_friend_array = $row['followers'] .$this->user['username'].",";
+		$remove_friend = mysqli_query($this->con, "UPDATE users SET followers='$new_friend_array' WHERE username='$user_to_follow'");
 	}
 
 		public function removeFriend($user_to_remove){
@@ -77,7 +91,7 @@ class User {
 
 		// make new array what replace user to blank in this friend_array
 		$new_friend_array = str_replace($this->user['username'].",", "", $friend_array_username);
-		$remove_friend = mysqli_query($this->con, "UPDATE users SET follow_array='$new_friend_array' WHERE username='$user_to_remove'");
+		$remove_friend = mysqli_query($this->con, "UPDATE users SET followers='$new_friend_array' WHERE username='$user_to_remove'");
 	}
 
 

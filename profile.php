@@ -40,11 +40,11 @@ if (isset($_GET['profile_username'])) {
     	$user = new USER($con, $userLoggedIn);
     	$user->removefriend($username);
     }
-    //
-    // if(isset($_POST['add_friend'])){
-    // 	$user = new USER($con, $userLoggedIn);
-    // 	$user->follow($username);
-    // }
+
+    if(isset($_POST['add_friend'])){
+    	$user = new USER($con, $userLoggedIn);
+    	$user->follow($username);
+    }
     ?>
 
     <div class="profile_left">
