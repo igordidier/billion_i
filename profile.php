@@ -1,6 +1,28 @@
 <?php
+include("includes/header.php");
+include("includes/classes/user.php");
+include("includes/classes/post.php");
+include("assets/js/jquery.js");
 
-require 'config/config.php';
+if (isset($_GET['profile_username'])) {
+  $username = $_GET['profile_username'];
+  $user_details_query = mysqli_query($con,"SELECT * FROM users WHERE username ='$username'  " );
+  $user_array = mysqli_fetch_array($user_details_query);
+
+
+if(isset($_POST['remove_friend'])){
+  $user = new USER($con, $userLoggedIn);
+  $user->removefriend($username);
+}
+
+if(isset($_POST['add_friend'])){
+  $user = new USER($con, $userLoggedIn);
+  $user->follow($username);
+}
+
+if(isset($_POST['edit'])){
+  header("location: upload.php");
+}
 // if (!isset($_SESSION['username'])) {
 //   	$_SESSION['msg'] = "You must log in first";
 //   	header('location: register.php');
@@ -10,49 +32,18 @@ require 'config/config.php';
 //   	unset($_SESSION['username']);
 //   	header("location: register.php");
 //   }
-if (isset($_GET['profile_username'])) {
-  $username = $_GET['profile_username'];
-  $user_details_query = mysqli_query($con,"SELECT * FROM users WHERE username ='$username'  " );
-  $user_array = mysqli_fetch_array($user_details_query);
 
+
+$num_followers = (substr_count($user_array['followers'], ",")) -1;
 
 }
  ?>
 
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Billi</title>
-    <?php include "includes/boot.html"; ?>
-    <link rel="stylesheet" href="assets/css/index.css">
-  </head>
-  <body>
-    <?php
-    include("includes/header.php");
-    include("includes/classes/user.php");
-    include("includes/classes/post.php");
-    include("assets/js/jquery.js");
 
-    
-    if(isset($_POST['remove_friend'])){
-      $user = new USER($con, $userLoggedIn);
-      $user->removefriend($username);
-    }
-
-    if(isset($_POST['add_friend'])){
-      $user = new USER($con, $userLoggedIn);
-      $user->follow($username);
-    }
-    $num_followers = (substr_count($user_array['followers'], ",")) -1;
-
-
-    ?>
 
     <div class="profile_left">
-      <span style="text-align: center;"><?php echo $username; ?></span>
-      <br>
+
 
         <img class="profile_pic_profile" src="<?php echo $user_array['profile_pic']; ?>" alt="profil picture">
 
@@ -103,7 +94,78 @@ if (isset($_GET['profile_username'])) {
 
     </div>
 
+    <div class="main_collum">
 
+
+
+      <div class="posts_area"></div>
+
+      <img id="loading" src="assets/img/icons/loading.gif" style="
+        display: flex;
+        margin: auto;
+    ">
+
+
+    </div>
+
+
+
+
+    <script>
+  		var userLoggedIn = '<?php echo $userLoggedIn; ?>';
+  		var profileUsername = '<?= $username ?>';
+
+  		$(document).ready(function(){
+
+  			$('#loading').show();
+
+  			//original ajax request for loading first posts
+  			$.ajax({
+  				url: "includes/handlers/ajax_load_profile_posts.php",
+  				type: "POST",
+  				data: "page=1&userLoggedIn=" + userLoggedIn + "&profileUsername=" +profileUsername, // send page and userLoggedIn
+  				cache: false, //cache에 저장x
+
+  				success: function(data){ //data = return되는 값
+  					$('#loading').hide();
+  					$('.posts_area').html(data);
+  				}
+  			});
+
+  			$(window).scroll(function(){
+  				var height = $('.posts_area').height(); // div containing posts
+  				var scroll_top = $(this).scrollTop();
+  				var page = $('.posts_area').find('.nextPage').val();
+  				var noMorePosts = $('.posts_area').find('.noMorePosts').val();
+
+  				if ((document.body.scrollHeight == document.body.scrollTop + window.innerHeight) && noMorePosts == 'false'){
+  					$('#loading').show();
+
+  					var ajaxReq = $.ajax({
+  						url: "includes/handlers/ajax_load_profile_posts.php",
+  						type: "POST",
+  						data: "page=" + page + "&userLoggedIn=" + userLoggedIn + "&profileUsername=" +profileUsername,
+  						cache: false,
+
+  						success: function(data){
+  							//Removes current .nextpage when scroll is bottom
+  							$('.posts_area').find('.nextPage').remove();
+  							//Removes current .no more posts when scroll is bottom
+  							$('.posts_area').find('.noMorePosts').remove();
+
+  							$('#loading').hide();
+  							$('.posts_area').append(data);
+  						}
+  					});
+  				} //End if
+
+  				return false;
+
+  			}); // End window.scroll(function()
+
+  		});
+
+  	</script>
 
 
 </div>

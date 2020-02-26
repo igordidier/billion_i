@@ -1,4 +1,23 @@
-<?php if (isset($_SESSION['username'])){
+<?php
+
+
+
+require 'config/config.php';
+if (!isset($_SESSION['username'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: register.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['username']);
+  	header("location: register.php");
+  }
+
+
+
+
+
+if (isset($_SESSION['username'])){
 	// It is created when logged in(Check includes/form_handler/login_handler.php)
 	$userLoggedIn = $_SESSION['username'];
 	$user_details_query = mysqli_query($con, "SELECT * FROM users WHERE username='$userLoggedIn'");
@@ -7,7 +26,31 @@
 else{
 	header("Location: register.php");
 }
+
+
+
 ?>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Billi</title>
+
+		<!-- css -->
+    <?php include "includes/boot.html"; ?>
+    <link rel="stylesheet" href="assets/css/index.css">
+		<link rel="stylesheet" href="assets/css/jquery.Jcrop.css" type="text/css" />
+
+		<!-- js -->
+
+		<script src="assets/js/jquery.jcrop.js"></script>
+	<script src="assets/js/jcrop_bits.js"></script>
+  </head>
+  <body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js" integrity="sha256-sfG8c9ILUB8EXQ5muswfjZsKICbRIJUG/kBogvvV5sY=" crossorigin="anonymous"></script>
 <div class="header">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,6 +59,8 @@ else{
   <a class="navbar-brand" href="index.php">Billi</a>
 
     <a class="navbar-brand" href="all.php">All Page</a>
+
+		<a class="navbar-brand" href="post_page.php">Post</a>
 
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">

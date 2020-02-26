@@ -90,30 +90,19 @@ input[type=button], input[type=submit], input[type=reset] {
     border-radius: 25px;
 }
 
-.wrapper .user_details{
-	width: 250px;
-	float: left;
-	margin-bottom: 20px;
+.user_details{
+  position: fixed;
+    left: 5px;
+    top: 100px;
+    width: 200px;
 }
 
-.wrapper .user_details img{
-	height: 125px;
-	border-radius: 5px;
-	margin-right: 5px;
+@media screen and (max-width: 1250px) {
+  .user_details {
+    display: none;
+  }
 }
 
-.wrapper .user_details .user_details_left_right{
-	width: 125px;
-	display: inline-block;
-	position: absolute;
-}
-
-.wrapper .main_column{
-	float: right;
-	width: 70%;
-	z-index: -1;
-	min-height: 170px;
-}
 
 .post_form{
       padding: 50px;
@@ -148,6 +137,7 @@ border: 2.3px solid;
     width: auto;
     height: 25vw;
     border: 1px solid;
+        word-break: break-all;
 }
 
 .tetx_post{
@@ -161,6 +151,13 @@ border: 2.3px solid;
   text-align: center;
   margin: auto;
 
+}
+
+.posts_area{
+  width: 75%;
+margin: auto;
+
+}
 }
 
 #time{
@@ -224,12 +221,12 @@ margin: 10px;
 .profile_left{
 
 
-    position: absolute;
+
 
     display: flex;
     margin: auto;
     padding: 15px;
-    border: 2px solid;
+
     top: 80px;
     width: 75%;
 }

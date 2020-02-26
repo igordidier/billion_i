@@ -1,28 +1,8 @@
-<?php
-
-require 'config/config.php';
-if (!isset($_SESSION['username'])) {
-  	$_SESSION['msg'] = "You must log in first";
-  	header('location: register.php');
-  }
-  if (isset($_GET['logout'])) {
-  	session_destroy();
-  	unset($_SESSION['username']);
-  	header("location: register.php");
-  }
-
- ?>
 
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Billi</title>
-    <?php include "includes/boot.html"; ?>
-    <link rel="stylesheet" href="assets/css/index.css">
-  </head>
-  <body>
+
+
+
   <?php
 
   include("includes/header.php");
@@ -39,7 +19,22 @@ if (isset($_POST['post'])) {
   ?>
 
 
+<a href="<?= $userLoggedIn ?>" >  <div class="user_details column">
+  		<img style="border-radius: 50%;width: 150px;height: 150px;display: flex;margin: auto;" src="<?= $user['profile_pic']; ?>">
 
+  		<div class="user_details_left_right">
+  			<a href="<?= $userLoggedIn ?>">
+  				<?= $user['first_name'] . " " . $user['last_name'];	?>
+  			</a>
+  			<br/>
+  			<?php
+  			echo "Posts: ".$user['num_posts']. "<br/>";
+  			echo "Likes: ".$user['num_likes'];
+  			 ?>
+  		</div>
+
+  </div>
+  </a>
 
 <div class="main_collum">
 
