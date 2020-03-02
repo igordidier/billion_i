@@ -6,7 +6,7 @@ if (isset($_POST['login_button'])) {
   $_SESSION['log_email'] = $email;
   $psd = md5($_POST['log_password']);
 
-  $check_database_query = mysqli_query($con,"SELECT * FROM users WHERE email='$email' AND password='$psd'");
+  $check_database_query = mysqli_query($con,"SELECT * FROM users WHERE email='$email' OR username='$email' AND password='$psd'");
   $check_login_query = mysqli_num_rows($check_database_query);
 
   if ($check_login_query == 1) {
@@ -20,7 +20,7 @@ if (isset($_POST['login_button'])) {
 
     header("location: index.php");
   }else {
-    array_push($error_array2,"Email or Password Incorrect");
+    array_push($error_array2,"Email/Username or Password Incorrect");
   }
 }
 

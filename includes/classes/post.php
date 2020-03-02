@@ -96,11 +96,11 @@ class Post {
 						$count++;
 					}
 
-					if($userLoggedIn == $added_by){
-						$delete_button = "<button class='delete_button btn-danger' id='post$id'>X</button>";
-					} else{
-						$delete_button = "";
-					}
+					// if($userLoggedIn == $added_by){
+					// 	$delete_button = "<button class='delete_button btn-danger' name='result' id='post$id'>X</button>";
+					// } else{
+					// 	$delete_button = "";
+					// }
 
 					$user_details_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM users WHERE username='$added_by'");
 					$user_row = mysqli_fetch_array($user_details_query);
@@ -203,7 +203,7 @@ $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id
 																			<a href='$added_by'>
 																				$added_by
 																			</a>
-																				$delete_button
+
 					 														<span id='time'>$time_message</span>
 
 					 													</div>
@@ -316,7 +316,7 @@ $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id
 					}
 
 					if($userLoggedIn == $added_by){
-						$delete_button = "<button class='delete_button btn-danger' id='post$id'>X</button>";
+						$delete_button = "<button class='delete_button btn-danger'  id='post$id'>X</button>";
 					} else{
 						$delete_button = "";
 					}
@@ -443,7 +443,7 @@ $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id
 							bootbox.confirm("Are you sure you want to delete this post?", function(result){
 
 								//send this method, and inside of var result insert argument result, and send it
-								$.post("includes/form_handler/delete_post.php?post_id=<?= $id; ?>", {result:result});
+								$.post("includes/form_handlers/delete_post.php?post_id=<?= $id; ?>", {result:result});
 
 								if(result){
 									setTimeout(function(){
