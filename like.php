@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type='text/css' href="assets/css/index.css">
+	<link rel="stylesheet" type='text/css' href="assets/css/style.css">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 	require_once ('config/config.php');
 	include_once ("includes/classes/User.php");
 	include_once ("includes/classes/Post.php");
-	// include_once ("includes/classes/Notification.php");
+
 
 	//Get id of post
 	if(isset($_GET['post_id'])){
@@ -54,7 +54,7 @@
 
 	//Like Button
 	if(isset($_POST['like_button'])) {
-
+		$total_likes++;
 		$query = mysqli_query($con, "UPDATE posts SET likes='$total_likes' WHERE id='$post_id'");
 		$total_user_likes++;
 		$user_likes = mysqli_query($con, "UPDATE user SET num_likes='$total_user_likes' WHERE username='$user_liked'");
@@ -62,17 +62,13 @@
 		$insert_user = mysqli_query($con, "INSERT INTO likes VALUES(NULL, '$userLoggedIn', '$post_id')");
 
 		//insert notifications
-		if($user_liked != $userLoggedIn){
-			// $notification = new Notification($con, $userLoggedIn);
-			// $notification->insertNotification($post_id, $user_liked, "like");
-		}
+
 	}
 	//Unlike Button
 	if(isset($_POST['unlike_button'])) {
-
 		$total_likes--;
 		$query = mysqli_query($con, "UPDATE posts SET likes='$total_likes' WHERE id='$post_id'");
-
+		$total_user_likes--;
 		$user_likes = mysqli_query($con, "UPDATE user SET num_likes='$total_user_likes' WHERE username='$user_liked'");
 		//insert who like what post
 		$insert_user = mysqli_query($con, "DELETE FROM likes WHERE username='$userLoggedIn' AND post_id='$post_id'");
@@ -85,26 +81,24 @@
 
 	//if I already checked like on this post
 	if($num_rows > 0){
-		echo ('<form action="like.php?post_id=20" method="POST" style="margin: 10px;">
-	<button type="submit" name="unlike_button" style="border: 0px;background-color: transparent;">
-	<img  src="assets/img/icons/bump_liked.png" style="
-	    width: 30px;
-	">
-</button>
-<div style="margin: 10px;float: right;">
-					'.$total_likes.'
-				</div>
+		echo ('<form action="like.php?post_id='.$post_id.'" method="POST">
+		<button type="submit" name="unlike_button" style="border: 0px;background-color: transparent;">
+		<img  src="assets/img/icons/bump_liked.png" style="width: 30px;">
+		</button>
+		<div style="margin: 10px;float: right;">
+				  	'.$total_likes.' Likes
+				  </div>
 			  </form>
 		');
 	}
 	// if I didn't check like on this post yet
 	else{
-		echo ('<form action="like.php?post_id=20" method="POST" style="margin: 10px;">
+		echo ('<form action="like.php?post_id='.$post_id.'" method="POST">
 		<button type="submit" name="like_button" style="border: 0px;background-color: transparent;">
 		<img  src="assets/img/icons/bump.png" style="width: 30px;">
-	</button>
-	<div style="margin: 10px;float: right;">
-				  	'.$total_likes.'
+		</button>
+		<div style="margin: 10px;float: right;">
+				  	'.$total_likes.' Likes
 				  </div>
 			  </form>
 		');

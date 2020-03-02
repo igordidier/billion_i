@@ -34,7 +34,7 @@ if(isset($_POST['edit'])){
 //   }
 
 
-$num_followers = (substr_count($user_array['followers'], ",")) -1;
+
 
 }
  ?>
@@ -86,6 +86,7 @@ $num_followers = (substr_count($user_array['followers'], ",")) -1;
 
 
 <ul class="profil_stat">
+  <?php $num_followers = (substr_count($user_array['followers'], ",")) -1; ?>
   <li>Post: <?php echo $user_array['num_posts']; ?> </li>
   <li>Followers: <?php echo $num_followers; ?></li>
 </ul>

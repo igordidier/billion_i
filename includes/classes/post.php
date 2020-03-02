@@ -370,9 +370,9 @@ $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id
 						}
 
 						if($interval->m == 1){
-							$time_message = $inverval->m." month".$days;
+							$time_message = $interval->m." month".$days;
 						} else{
-							$time_message = $inverval->m." month".$days;
+							$time_message = $interval->m." month".$days;
 						}
 					}
 					else if($interval->d >= 1){
