@@ -96,7 +96,7 @@ if (isset($_POST['x'])){
 	if($type == 'jpg' || $type == 'jpeg' || $type == 'JPG' || $type == 'JPEG'){
 
 		//the target dimensions 150x150
-			$targ_w = $targ_h = 150;
+			$targ_w = $targ_h = 200;
 		//quality of the output
 			$jpeg_quality = 90;
 		//create a cropped copy of the image
@@ -110,7 +110,7 @@ if (isset($_POST['x'])){
 	}else if($type == 'png' || $type == 'PNG'){
 
 		//the target dimensions 150x150
-			$targ_w = $targ_h = 150;
+			$targ_w = $targ_h = 200;
 		//quality of the output
 			$jpeg_quality = 90;
 		//create a cropped copy of the image
@@ -124,7 +124,7 @@ if (isset($_POST['x'])){
 	}else if($type == 'gif' || $type == 'GIF'){
 
 		//the target dimensions 150x150
-			$targ_w = $targ_h = 150;
+			$targ_w = $targ_h = 200;
 		//quality of the output
 			$jpeg_quality = 90;
 		//create a cropped copy of the image
