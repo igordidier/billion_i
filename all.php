@@ -8,7 +8,7 @@
   include("all_content/user.php");
   include("all_content/post.php");
   include("assets/js/jquery.js");
-  
+
 
 if (isset($_POST['post'])) {
   $post = new Post($con, $userLoggedIn);
@@ -20,7 +20,22 @@ if (isset($_POST['post'])) {
 
 
 
+  <a href="<?= $userLoggedIn ?>" >  <div class="user_details column">
+    		<img style="border-radius: 50%;width: 150px;height: 150px;display: flex;margin: auto;" src="<?= $user['profile_pic']; ?>">
 
+    		<div class="user_details_left_right">
+    			<a href="<?= $userLoggedIn ?>">
+    				<?= $user['first_name'] . " " . $user['last_name'];	?>
+    			</a>
+    			<br/>
+    			<?php
+    			echo "Posts: ".$user['num_posts']. "<br/>";
+    			echo "Likes: ".$user['num_likes'];
+    			 ?>
+    		</div>
+
+    </div>
+    </a>
 <div class="main_collum">
 
   <form class="post_form" action="index.php" method="post">

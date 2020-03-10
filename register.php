@@ -9,6 +9,8 @@ require 'includes/form_handlers/login_handler.php';
     <meta charset="utf-8">
     <title>Welcome</title>
     <link rel="stylesheet" href="assets/css/register_style.css">
+    <link rel="icon" type="image/png" href="assets/img/signin/billioni black.png" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="assets/js/register.js">
 
@@ -42,7 +44,7 @@ require 'includes/form_handlers/login_handler.php';
 
     <form class="" action="register.php" method="post">
               <?php include('config/errors2.php'); ?>
-              <input type="text" name="log_email" placeholder="Email Adresse Or Username" value="<?php if (isset($_SESSION['login_email'])) {
+              <input type="text" name="log_email" placeholder="Email Adresse/Username" value="<?php if (isset($_SESSION['login_email'])) {
                 echo $_SESSION['reg_email'];
               } ?>" required >
               <br>

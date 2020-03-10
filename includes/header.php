@@ -36,6 +36,7 @@ else{
   <head>
     <meta charset="utf-8">
     <title>Billi</title>
+    <link rel="icon" type="image/png" href="assets/img/signin/billioni black.png" />
 
 		<!-- css -->
     <?php include "includes/boot.html"; ?>
