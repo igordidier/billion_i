@@ -2,40 +2,40 @@
 
 
 
+
   <?php
 
   include("includes/header.php");
-  include("all_content/user.php");
-  include("all_content/post.php");
-  include("assets/js/jquery.js");
+  include("includes/classes/user.php");
+  include("includes/classes/post.php");
+  //include("assets/js/jquery.js");
 
 
 if (isset($_POST['post'])) {
   $post = new Post($con, $userLoggedIn);
   $post -> submitpost($_POST['post_text'], 'none');
-  header("location: all.php");
+  header("location: index.php");
 }
 
   ?>
 
 
+<a href="<?= $userLoggedIn ?>" >  <div class="user_details column">
+  		<img style="border-radius: 50%;width: 150px;height: 150px;display: flex;margin: auto;" src="<?= $user['profile_pic']; ?>">
+  		<div class="user_details_left_right">
+  			<a href="<?= $userLoggedIn ?>">
+  				<?= $user['first_name'] . " " . $user['last_name'];	?>
+  			</a>
+  			<br/>
+  			<?php
+  			echo "Posts: ".$user['num_posts']. "<br/>";
+  			echo "Likes: ".$user['num_likes'];
+  			 ?>
+  		</div>
 
-  <a href="<?= $userLoggedIn ?>" >  <div class="user_details column">
-    		<img style="border-radius: 50%;width: 150px;height: 150px;display: flex;margin: auto;" src="<?= $user['profile_pic']; ?>">
+  </div>
+  </a>
 
-    		<div class="user_details_left_right">
-    			<a href="<?= $userLoggedIn ?>">
-    				<?= $user['first_name'] . " " . $user['last_name'];	?>
-    			</a>
-    			<br/>
-    			<?php
-    			echo "Posts: ".$user['num_posts']. "<br/>";
-    			echo "Likes: ".$user['num_likes'];
-    			 ?>
-    		</div>
-
-    </div>
-    </a>
 <div class="main_collum">
 
   <form class="post_form" action="index.php" method="post">
@@ -58,6 +58,7 @@ if (isset($_POST['post'])) {
 </div>
 
 <script>
+
 $(function(){
 
 	var userLoggedIn = '<?php echo $userLoggedIn; ?>';
@@ -86,7 +87,7 @@ $(function(){
 		var page = $('.posts_area').find('.nextPage').val() || 1; //If .nextPage couldn't be found, it must not be on the page yet (it must be the first time loading posts), so use the value '1'
 
 		$.ajax({
-			url: "all_content/ajax_load_posts.php",
+			url: "includes/handlers/ajax_load_all_posts.php",
 			type: "POST",
 			data: "page=" + page + "&userLoggedIn=" + userLoggedIn,
 			cache:false,

@@ -8,7 +8,7 @@
   include("includes/header.php");
   include("includes/classes/user.php");
   include("includes/classes/post.php");
-  include("assets/js/jquery.js");
+  //include("assets/js/jquery.js");
   
 
 if (isset($_POST['post'])) {
@@ -22,7 +22,6 @@ if (isset($_POST['post'])) {
 
 <a href="<?= $userLoggedIn ?>" >  <div class="user_details column">
   		<img style="border-radius: 50%;width: 150px;height: 150px;display: flex;margin: auto;" src="<?= $user['profile_pic']; ?>">
-
   		<div class="user_details_left_right">
   			<a href="<?= $userLoggedIn ?>">
   				<?= $user['first_name'] . " " . $user['last_name'];	?>
@@ -59,6 +58,7 @@ if (isset($_POST['post'])) {
 </div>
 
 <script>
+
 $(function(){
 
 	var userLoggedIn = '<?php echo $userLoggedIn; ?>';
