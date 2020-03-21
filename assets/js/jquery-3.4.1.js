@@ -6253,9 +6253,9 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 			return;
 		}
 
-		container.style.cssText = "position:absolute;left:-11111px;width:60px;" +
+		container.index.cssText = "position:absolute;left:-11111px;width:60px;" +
 			"margin-top:1px;padding:0;border:0";
-		div.style.cssText =
+		div.index.cssText =
 			"position:relative;display:block;box-sizing:border-box;overflow:scroll;" +
 			"margin:auto;border:1px;padding:1px;" +
 			"width:60%;top:1%";

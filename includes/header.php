@@ -3,6 +3,11 @@
 
 
 require 'config/config.php';
+include("includes/classes/user.php");
+include("includes/classes/post.php");
+include("includes/classes/notification.php");
+
+
 if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: register.php');
@@ -48,6 +53,7 @@ else{
 		<script src="assets/js/jquery-3.4.1.js"></script>
 		<script src="assets/js/jquery.Jcrop.min.js"></script>
 	<script src="assets/js/jcrop_bits.js"></script>
+  <script src="assets/js/billi.js"></script>
   </head>
   <body>
 
@@ -75,8 +81,25 @@ else{
   </table>
     </form>
 
+<?php
+
+			//Unread Notifications
+			$notifications = new Notification($con, $userLoggedIn);
+			$num_notifications = $notifications->getUnreadNumber();
+      //Unread Notifications
+		//	 $user_obj = new User($con, $userLoggedIn);
+	//	 $num_requests = $user_obj->getNumberOfFriendRequests();
+ ?>
 
     <li class="nav-item active">
+      <a href="javascript:void(0);" onclick="getDropdownData('<?= $userLoggedIn; ?>', 'notification')">
+  				Note
+  				<?php
+  				if($num_notifications > 0){
+  				echo '<span class="notification_badge" id="unread_notification">'.$num_notifications.'</span>';
+  				}
+  				?>
+  			</a>
     <a class="nav-link" href="includes/handlers/logout.php">log out</a>
     <a href="<?php echo $userLoggedIn; ?>"> <?php echo ucfirst($_SESSION["username"]); ?> </a>
     </li>

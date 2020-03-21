@@ -1,8 +1,6 @@
 <?php
 include("includes/header.php");
-include("includes/classes/user.php");
-include("includes/classes/post.php");
-// include("assets/js/jquery.js");
+
 
 
 if (isset($_GET['profile_username'])) {

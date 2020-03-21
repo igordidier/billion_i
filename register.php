@@ -8,7 +8,7 @@ require 'includes/form_handlers/login_handler.php';
   <head>
     <meta charset="utf-8">
     <title>Welcome</title>
-    <link rel="stylesheet" href="assets/css/register_style.css">
+    <link rel="stylesheet" href="assets/css/register_index.css">
     <link rel="icon" type="image/png" href="assets/img/signin/billioni black.png" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

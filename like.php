@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type='text/css' href="assets/css/style.css">
+	<link rel="stylesheet" type='text/css' href="assets/css/index.css">
 </head>
 <body>
 
@@ -21,6 +21,7 @@
 	require_once ('config/config.php');
 	include_once ("includes/classes/User.php");
 	include_once ("includes/classes/Post.php");
+	include_once ("includes/classes/notification.php");
 
 
 	//Get id of post
@@ -62,8 +63,11 @@
 		$insert_user = mysqli_query($con, "INSERT INTO likes VALUES(NULL, '$userLoggedIn', '$post_id')");
 
 		//insert notifications
-
+		if($user_liked != $userLoggedIn){
+		$notification = new Notification($con, $userLoggedIn);
+		$notification->insertNotification($post_id, $user_liked, "like");
 	}
+}
 	//Unlike Button
 	if(isset($_POST['unlike_button'])) {
 		$total_likes--;
@@ -103,6 +107,7 @@
 			  </form>
 		');
 	}
+
 
 	?>
 

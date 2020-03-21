@@ -462,6 +462,7 @@ $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id
 
 	}
 
+
 	public function loadProfilePosts($data, $limit){
 
 			$page = $data['page'];
@@ -513,7 +514,7 @@ $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id
 					}
 
 					if($userLoggedIn == $added_by){
-						$delete_button = "<button class='delete_button btn-danger'  id='post$id'>X</button>";
+						$delete_button = "<button class='delete_button btn-danger' id='post$id'>X</button>";
 					} else{
 						$delete_button = "";
 					}
@@ -526,17 +527,17 @@ $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id
 					?>
 
 					<script>
-					function toggle<?= $id ?>(){
-		var target = $(event.target);
-		if(!target.is('a')){
-			var element = document.getElementById("toggleComment<?= $id; ?>");
-			if(element.style.display == "block"){
-				element.style.display = "none";
-			} else{
-				element.style.display = "block";
-			}
-		}
-	}
+						function toggle<?= $id ?>(event){
+							var target = $(event.target);
+							if(!target.is('a')){
+								var element = document.getElementById("toggleComment<?= $id; ?>");
+								if(element.style.display == "block"){
+									element.style.display = "none";
+								} else{
+									element.style.display = "block";
+								}
+							}
+						}
 
 					</script>
 

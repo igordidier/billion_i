@@ -160,8 +160,8 @@ if (isset($_POST['x'])){
 
 	    <form action="upload.php" method="post"  enctype="multipart/form-data">
 	        Upload something<br /><br />
-	        <input type="file" id="image" name="image" style="width:200px; height:30px; " /><br /><br />
-	        <input type="submit" value="Submit" style="width:85px; height:25px;" />
+	        <input type="file" id="image" name="image" style=" " /><br /><br />
+	        <input type="submit" value="Submit" style="" />
 	    </form><br /><br />
 
 	</div> <!-- Form-->
