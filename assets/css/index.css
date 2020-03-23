@@ -1,18 +1,18 @@
 .header {
-  color: white;
-  background: black;
+background-color: white;
   overflow: hidden;
 position: fixed;
 z-index: 99;
 width: 100%;
 }
 .header a {
-  float: left;
+
 
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  color: black;
 }
 
 .header a:hover {
@@ -26,7 +26,10 @@ width: 100%;
 }
 
 .header_right {
-  float: right;
+  right: 1%;
+display: flex;
+position: absolute;
+top: 20%;
 }
 
 #srchbtn{
@@ -42,6 +45,7 @@ border-radius: 10px;
 #srchbox{
   border-radius: 10px;
     padding: 10px;
+    float: left;
 }
 
 
@@ -270,4 +274,65 @@ margin-top: 10px;
 
 #formExample{
   margin: 7vw;
+}
+
+.menu_ul_center{
+  float: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu_li_center{
+  text-decoration: none;
+}
+
+
+
+#profil_header{
+  width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.dropdown_data_window{
+	background-color: #fff;
+	border: 1px solid #DADADA;
+	border-radius: 0 0 8px 8px;
+	border-top: none;
+	width: 300px;
+	position: absolute;
+	right: 10px;
+	top: 40px;
+	overflow-y: auto;
+}
+
+.notification_badge{
+	padding: 3px 7px;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	background-color: #f00;
+	border-radius: 10px;
+	position: absolute;
+	left: 8px;
+	top: -10px;
+}
+
+.resultDisplayNotification{
+	height: auto;
+	color: #1485BD;
+	padding-bottom: 7px;
+}
+
+.resultDisplayNotification img{
+	height: 40px;
+	border-radius: 5px;
+	margin: 1px 12px 0px 2px;
+	float: left;
 }
