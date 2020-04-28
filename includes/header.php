@@ -6,6 +6,7 @@
 require 'config/config.php';
 include("includes/classes/user.php");
 include("includes/classes/post.php");
+include("includes/classes/Message.php");
 include("includes/classes/notification.php");
 
 
@@ -94,8 +95,11 @@ else{
 
 
 </div>
+<div class="dropdown_data_window" style='height:0px; border:none;'></div>
+			<input type='hidden' id="dropdown_data_type" value="">
 
-<script>
+	</div>
+  <script>
 		var userLoggedIn = '<?php echo $userLoggedIn; ?>';
 
 		$(document).ready(function(){
@@ -145,5 +149,4 @@ else{
 		});
 
 	</script>
-
 <div class="wrapper">

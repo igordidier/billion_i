@@ -57,17 +57,20 @@ function getUsers(value, user){ // data in function(data) is return value of aja
 	});
 }
 
-function getDropdownData(user, type){
-	if($(".dropdown_data_window").css("height") == "0px"){
-		var pageName;
-		if(type == 'notification'){
-			pageName = "ajax_load_notifications.php";
-			$('span').remove("#unread_notification");
-		}
+function getDropdownData(user, type) {
+	console.log("dropdown_data_window: " + $(".dropdown_data_window").length);
+	console.log("dropdown_data_type: " + $(".dropdown_data_type").length);
+	if($(".dropdown_data_window").css("height") == "0px") {
 
-		else if(type=='message'){
+		var pageName;
+
+		if(type == 'notification') {
+			pageName = "ajax_load_notifications.php";
+			$("span").remove("#unread_notification");
+		}
+		else if (type == 'message') {
 			pageName = "ajax_load_messages.php";
-			$('span').remove("#unread_message");
+			$("span").remove("#unread_message");
 		}
 
 		var ajaxreq = $.ajax({
@@ -76,37 +79,18 @@ function getDropdownData(user, type){
 			data: "page=1&userLoggedIn=" + user,
 			cache: false,
 
-			success: function(response){
+			success: function(response) {
 				$(".dropdown_data_window").html(response);
-				$(".dropdown_data_window").css({"padding": "0px", "height": "280px", "border": "1px solid #DADADA"});
+				$(".dropdown_data_window").css({"padding" : "0px", "height": "280px", "border" : "1px solid #DADADA"});
 				$("#dropdown_data_type").val(type);
 			}
+
 		});
+
 	}
-	else{
+	else {
 		$(".dropdown_data_window").html("");
-		$(".dropdown_data_window").css({"padding": "0px", "height": "0px", "border": "none"});
+		$(".dropdown_data_window").css({"padding" : "0px", "height": "0px", "border" : "none"});
 	}
-}
-
-function getLiveSearchUsers(value, user){
-
-	$.post("includes/handlers/ajax_search.php", {query:value, userLoggedIn: user}, function(data){
-
-		if($(".search_results_footer_empty")){
-			$(".search_results_footer_empty").toggleClass('search_results_footer');
-			$(".search_results_footer_empty").toggleClass('search_results_footer_empty');
-		}
-
-		$('.search_results').html(data);
-		$('.search_results_footer').html("<a href='search.php?q=" + value + "'>See all results</a>");
-
-		if(data == ""){
-			$('.search_results_footer').html("");
-			$('.search_results_footer').toggleClass("search_results_footer_empty");
-			$('.search_results_footer').toggleClass("search_results_footer");
-		}
-
-	});
 
 }
