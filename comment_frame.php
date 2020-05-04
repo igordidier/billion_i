@@ -122,10 +122,11 @@
 					$days = $interval->d." days ago";
 				}
 
-				if($interval->m == 1){
-					$time_message = $inverval->m." month".$days;
-				} else{
-					$time_message = $inverval->m." month".$days;
+				if($interval->m == 1) {
+					$time_message = $interval->m . " month". $days;
+				}
+				else {
+					$time_message = $interval->m . " months". $days;
 				}
 			}
 			else if($interval->d >= 1){

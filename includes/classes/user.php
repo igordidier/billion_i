@@ -93,7 +93,26 @@ class User {
 		$new_friend_array = str_replace($this->user['username'].",", "", $friend_array_username);
 		$remove_friend = mysqli_query($this->con, "UPDATE users SET followers='$new_friend_array' WHERE username='$user_to_remove'");
 	}
+	public function getMutualFriends($user_to_check){
+			$mutualFriends = 0;
+			$user_array = $this->user['follow_array'];
+			$user_array_explode = explode(",", $user_array);
 
+			$query = mysqli_query($this->con, "SELECT follow_array FROM users WHERE username='$user_to_check'");
+			$row = mysqli_fetch_array($query);
+			$user_to_check_array = $row['follow_array'];
+			$user_to_check_array_explode = explode(",", $user_to_check_array);
+
+			foreach($user_array_explode as $i){
+				foreach($user_to_check_array_explode as $j){
+
+					if($i == $j && $i != ""){
+						$mutualFriends++;
+					}
+				}
+			}
+			return $mutualFriends;
+		}
 
 }
 

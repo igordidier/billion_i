@@ -96,11 +96,11 @@ class Post {
 						$count++;
 					}
 
-					// if($userLoggedIn == $added_by){
-					// 	$delete_button = "<button class='delete_button btn-danger' name='result' id='post$id'>X</button>";
-					// } else{
-					// 	$delete_button = "";
-					// }
+					if($userLoggedIn == $added_by){
+						$delete_button = "<button class='delete_button btn-danger' name='result' id='post$id'>X</button>";
+					} else{
+						$delete_button = "";
+					}
 
 					$user_details_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM users WHERE username='$added_by'");
 					$user_row = mysqli_fetch_array($user_details_query);
