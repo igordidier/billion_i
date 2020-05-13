@@ -50,7 +50,7 @@ if(isset($_POST['post_message'])){
 		<form action="" method="POST">
 			<?php
 			if($user_to == 'new'){
-				echo "Select the friend you would like to message <br/><br/>"; ?>
+				echo "Select the profile you would like to message <br/><br/>"; ?>
 				To:<input type='text' onkeyup='getUsers(this.value, "<?php echo $userLoggedIn;?>")' name='q' placeholder='Name' autocomplete='off' id='search_text_input'>
 				<?php
 				echo "<div class='results'></div>";
@@ -77,7 +77,7 @@ if(isset($_POST['post_message'])){
 	<h4>Conversations</h4>
 
 	<div class="loaded_conversations">
-	
+
 		<?= $message_obj->getConvos()?>
 	</div>
 	<br>
