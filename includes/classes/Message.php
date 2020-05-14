@@ -244,7 +244,7 @@ class Message {
 		}
 
 		else{
-			$return_string .= "<input type='hidden' class='nextPageDropdownData' value=' ".($page + 1)."'><input type='hidden' class='noMoreDropdownData' value='true'><p style = 'text-align: center; margin-top: 8px;'>No more messages to lead!</p>";
+			$return_string .= "<input type='hidden' class='nextPageDropdownData' value=' ".($page + 1)."'><input type='hidden' class='noMoreDropdownData' value='true'><p style = 'text-align: center; margin-top: 8px;'>No more messages to load!<a href='messages.php'>New messages</a></p>";
 		}
 
 		return $return_string;
