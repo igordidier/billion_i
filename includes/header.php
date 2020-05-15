@@ -63,12 +63,14 @@ else{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js" integrity="sha256-sfG8c9ILUB8EXQ5muswfjZsKICbRIJUG/kBogvvV5sY=" crossorigin="anonymous"></script>
 <div class="header">
 
-  <form id="srchbox"action="search.php" method="get">
+  <form id="srchbox"action="search.php" method="get" name="search_form">
       <table>
-        	<td><input type="text" name="search" size="50" required style="border-radius: 10px;" placeholder="Search Username"></td>
+        	<td><input type="text" name="search" size="50" required style="border-radius: 10px;" placeholder="Search Username"onkeyup="getLiveSearchUsers(this.value, '<?= $userLoggedIn ?>')" name="q"  autocomplete="off" ></td>
         	<td><input id="srchbtn" type="submit" value="Search" name="submit"></td>
       </table>
   </form>
+
+
 
     <div class="menu_ul_center">
         <a class="menu_li_center" href="index.php">Billi</a>
@@ -77,19 +79,20 @@ else{
     </div>
 
           <?php
+            //Unread messages
+  			$messages = new Message($con, $userLoggedIn);
+  			$num_messages = $messages->getUnreadNumber();
 
           //Unread Notifications
           $notifications = new Notification($con, $userLoggedIn);
           $num_notifications = $notifications->getUnreadNumber();
-          //Unread Notifications
-        //	 $user_obj = new User($con, $userLoggedIn);
-      //	 $num_requests = $user_obj->getNumberOfFriendRequests();
+
       ?>
 
   <div class="header_right">
     <a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'notification')">Note<?php  if($num_notifications > 0){  echo '<span class="notification_badge" id="unread_notification">'.$num_notifications.'</span>';  }  ?>
   </a>
-  <a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'message')">Message <?php  if($num_notifications > 0){  echo '<span class="notification_badge" id="unread_notification">'.$num_notifications.'</span>';  }  ?>
+  <a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'message')">Message <?php	if($num_messages > 0){	echo '<span class="notification_badge" id="unread_message">'.$num_messages.'</span>';		}	?>
 </a>
   <a class="nav-link" href="includes/handlers/logout.php">log out</a>
        <a style="padding: 0px;" href="<?php echo $userLoggedIn; ?>">  <img id="profil_header" src="<?= $user['profile_pic']; ?>" alt="Profile picture">  </a>
@@ -101,5 +104,5 @@ else{
 			<input type='hidden' id="dropdown_data_type" value="">
 
 	</div>
-  
+
 <div class="wrapper">
