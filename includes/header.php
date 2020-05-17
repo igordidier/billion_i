@@ -65,7 +65,7 @@ else{
 
   <form id="srchbox"action="search.php" method="get" name="search_form">
       <table>
-        	<td><input type="text" name="search" size="50" required style="border-radius: 10px;" placeholder="Search Username"onkeyup="getLiveSearchUsers(this.value, '<?= $userLoggedIn ?>')" name="q"  autocomplete="off" ></td>
+        	<td><input type="text" size="50" required style="border-radius: 10px;" placeholder="Search Username"onkeyup="getLiveSearchUsers(this.value, '<?= $userLoggedIn ?>')" name="q"  autocomplete="off" ></td>
         	<td><input id="srchbtn" type="submit" value="Search" name="submit"></td>
       </table>
   </form>
