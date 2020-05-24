@@ -597,9 +597,11 @@ margin-top: 10px;
 }
 
 #small_profile_pic{
-	height: 55px;
-	margin: 1px 12px 0 2px;
-	float: left;
+	height: 200px;
+  display: flex;
+margin: auto;
+	border-radius: 50%;
+
 }
 
 .settings_input{

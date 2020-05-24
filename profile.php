@@ -20,7 +20,7 @@ if(isset($_POST['add_friend'])){
 }
 
 if(isset($_POST['edit'])){
-  header("location: upload.php");
+  header("location: settings.php");
 }
 // if (!isset($_SESSION['username'])) {
 //   	$_SESSION['msg'] = "You must log in first";
@@ -90,6 +90,7 @@ if(isset($_POST['edit'])){
   <?php $num_followers = (substr_count($user_array['followers'], ",")) -1; ?>
   <li>Post: <?php echo $user_array['num_posts']; ?> </li>
   <li>Followers: <?php echo $num_followers; ?></li>
+  <li>About: <?php echo $user_array['bio']; ?></li>
 </ul>
             </div>
 
