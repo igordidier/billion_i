@@ -101,12 +101,21 @@ input[type=button], input[type=submit], input[type=reset] {
     width: 200px;
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1700px) {
   .user_details {
     display: none;
   }
 }
 
+@media screen and (max-width: 500px) {
+  .full_post {
+    height: 1500px;
+
+  }
+  .post_body{
+        height: 1250px;
+  }
+}
 
 .post_form{
       padding: 50px;
